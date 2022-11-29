@@ -12,7 +12,6 @@ defmodule Support.Fixture.FixtureHelper do
   end
 
   def retrieve_fixture("the lord of the rings") do
-    IO.inspect "here"
     File.read("lib/support/fixture/fixture_json/lord_of_the _rings.json")
   end
 
