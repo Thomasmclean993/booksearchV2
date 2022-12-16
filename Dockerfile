@@ -75,6 +75,7 @@
 # # copy release executables
 # COPY --from=build --chown="${USER}":"${USER}" /app/_build/"${MIX_ENV}"/rel/saturn ./
 
-# ENTRYPOINT ["bin/saturn"]
+# # ENTRYPOINT ["bin/saturn"]
+# ENTRYPOINT ["bin/release"]
 
 # CMD ["start"]
