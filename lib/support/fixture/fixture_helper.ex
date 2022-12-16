@@ -1,15 +1,7 @@
 defmodule Support.Fixture.FixtureHelper do
-  # def retrieve_lotr() do
-  #   file = "support/fixtures/lord_of_the_rings.json"
-  #   case File.read(file) do
-  #     {:ok, file} -> file
-  #     {:error, _} -> raise "Could not load fixture -> Lord of the rings"
-  #   end
-  # end
-
-  def retrieve_lotr(_string) do
-    File.read("support/fixture/lord_of_the_rings.json")
-  end
+ @moduledoc """
+ Responible for generating fixtures for testing purposes
+ """
 
   def retrieve_fixture("the lord of the rings") do
     IO.inspect "here"

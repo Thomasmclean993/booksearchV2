@@ -14,7 +14,7 @@ config :booksearch, BooksearchWeb.Endpoint,
 
 # Do not print debug messages in production
 config :logger, level: :info
-
+config :booksearch, BooksearchWeb.Endpoint, server: true
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key

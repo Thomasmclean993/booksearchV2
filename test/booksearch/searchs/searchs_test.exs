@@ -39,9 +39,9 @@ defmodule Booksearch.SearchsTest do
 
     test "Confirm a successful HTTPoison request is sent" do
       user_input = "the lord of the rings"
-      response = FixtureHelper.retrieve_lotr("the lord of the rings")
+      response = FixtureHelper.retrieve_fixture("the lord of the rings")
 
-      assert Search.send_to_api(user_input)
+      assert Search.send_to_api(user_input) == response
     end
   end
 

@@ -18,12 +18,13 @@ defmodule BooksearchWeb.SearchController do
     render_results(conn, search_params)
   end
 
-  # def create(conn, %{"search" => search_params}) do
-  #   with {:ok, results} <- Search.send_to_api(search_params) do
+  def create(_conn, %{"search" => search_params}) do
+    with {:ok, results} <- Search.send_to_api(search_params) do
 
-  #   render_results(conn, results)
-  #   end
-  # end
+      IO.inspect results
+    # render_results(conn, results)
+    end
+  end
 
   def show(conn, %{"id" => id}) do
     search = Searchs.get_search!(id)
