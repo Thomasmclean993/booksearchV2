@@ -1,4 +1,3 @@
-
 defmodule ExternalResponse do
   use Ecto.Schema
   import Ecto.Changeset
@@ -22,6 +21,4 @@ defmodule ExternalResponse do
   def convert_json(response) do
     response
   end
-
-  
 end

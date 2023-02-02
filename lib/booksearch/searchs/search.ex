@@ -22,7 +22,9 @@ defmodule Booksearch.Searchs.Search do
   end
 
   def send_to_api(user_input) do
-    HTTPoison.get("http://openlibrary.org/search.json?q=#{user_input}", [],
+    converted_input = convert_query(user_input)
+
+    HTTPoison.get("http://openlibrary.org/search.json?q=#{converted_input}", [],
       ssl: [versions: [:"tlsv1.2"]]
     )
   end

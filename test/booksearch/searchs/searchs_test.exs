@@ -1,10 +1,17 @@
 defmodule Booksearch.SearchsTest do
   use Booksearch.DataCase
+  use ExUnit.Case, async: true
   use Mimic.DSL
 
   alias Booksearch.Searchs
   alias Booksearch.Searchs.Search
   alias Support.Fixture.FixtureHelper
+
+  @auth_header {"Auth", "Fake"}
+  @headers [
+    {"Content-Type", "application/xml"},
+    {"Accept", "application/xml"},
+    @auth_header]
 
   describe "convert_query/1" do
     test "Successfully convert a query to the correct format" do
@@ -26,23 +33,21 @@ defmodule Booksearch.SearchsTest do
   end
 
   describe "Send_to_api/1" do
-    # test "Confirm a successful HTTPoison request is sent" do
-    #   user_input = "the lord of the rings"
-    #   response = FixtureHelper.retrieve_lotr("the lord of the rings")
-
-    #   expect(HTTPoison.get(_url, [], [ssl: [versions: [:"tlsv1.2"]]])) do
-    #      {:ok, response}
-    #   end
-
-    #   assert Search.send_to_api(user_input) == :ok
-    # end
-
     test "Confirm a successful HTTPoison request is sent" do
       user_input = "the lord of the rings"
-      response = FixtureHelper.retrieve_lotr("the lord of the rings")
+      response = FixtureHelper.retrieve_fixture("the lord of the rings")
 
-      assert Search.send_to_api(user_input)
+      expect(HTTPoison.get("","<fake_1>" , @headers), do: {:ok, status_code: 200, body: response})
+
+      assert Search.send_to_api(user_input) == :ok
     end
+
+    # test "Confirm a successful HTTPoison request is sent" do
+    #   user_input = "the lord of the rings"
+    #   response = FixtureHelper.retrieve_fixture("the lord of the rings")
+
+    #   assert Search.send_to_api(user_input) =~ :ok
+    # end
   end
 
   describe "search" do
