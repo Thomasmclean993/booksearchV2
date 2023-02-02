@@ -14,18 +14,11 @@ defmodule BooksearchWeb.SearchController do
     render(conn, "new.html", changeset: changeset)
   end
 
-  # def create(conn, %{"search" => search_params}) do
-  #   render_results(conn, search_params)
-  # end
-
-  def create(_conn, %{"search" => search_params}) do
-    with {:ok, results} <- Search.send_to_api(search_params) do
-      IO.inspect(results)
-      # render_results(conn, results)
-    end
+  def create(conn, %{"search" => search_params}) do
+    render_results(conn, search_params)
   end
 
-  def create(conn, %{"search_for" => %{"raw_query" => query}}) do
+  def search(conn, %{"search_for" => %{"raw_query" => query}}) do
     with {:ok, results} <- Search.send_to_api(query) do
       render_results(conn, results)
     end
