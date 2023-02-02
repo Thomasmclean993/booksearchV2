@@ -20,9 +20,8 @@ defmodule BooksearchWeb.SearchController do
 
   def create(_conn, %{"search" => search_params}) do
     with {:ok, results} <- Search.send_to_api(search_params) do
-
-      IO.inspect results
-    # render_results(conn, results)
+      IO.inspect(results)
+      # render_results(conn, results)
     end
   end
 
@@ -62,13 +61,13 @@ defmodule BooksearchWeb.SearchController do
 
   def render_results(conn, search_params) do
     case Searchs.create_search(search_params) do
-        {:ok, search} ->
-          conn
-          |> put_flash(:info, "Search created successfully.")
-          |> redirect(to: Routes.search_path(conn, :show, search))
+      {:ok, search} ->
+        conn
+        |> put_flash(:info, "Search created successfully.")
+        |> redirect(to: Routes.search_path(conn, :show, search))
 
-        {:error, %Ecto.Changeset{} = changeset} ->
-          render(conn, "new.html", changeset: changeset)
-      end
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn, "new.html", changeset: changeset)
+    end
   end
 end
