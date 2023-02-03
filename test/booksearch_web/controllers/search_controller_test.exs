@@ -50,6 +50,20 @@ defmodule BooksearchWeb.SearchControllerTest do
     end
   end
 
+  # describe "Search action" do
+  #   test "can send a query to the api", %{conn: conn} do
+  #     test "redirects to show when data is valid", %{conn: conn} do
+  #       conn = post(conn, Routes.search_path(conn, :create), search: @create_attrs)
+
+  #       assert %{id: id} = redirected_params(conn)
+  #       assert redirected_to(conn) == Routes.search_path(conn, :search)
+
+  #       conn = get(conn, Routes.search_path(conn, :show, id))
+  #       assert json_response(conn, 200)
+  #     end
+  #   end
+  # end
+
   describe "edit search" do
     setup [:create_search]
 
