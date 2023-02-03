@@ -18,6 +18,7 @@ defmodule BooksearchWeb.SearchController do
     render_results(conn, search_params)
   end
 
+  # TODO: Need add json converter logic into the action
   def search(conn, %{"search_for" => %{"raw_query" => query}}) do
     with {:ok, results} <- Search.send_to_api(query) do
       render_results(conn, results)
